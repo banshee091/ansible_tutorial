@@ -1,0 +1,6 @@
+- name: create a keypair in a local folder that is not .ssh
+  openssh_keypair:
+     path: "~/ansible_tutorial/ssh/ssh_{{ vm_name }}"
+	 type: ecdsa
+	 size: 4096
+	 state: present

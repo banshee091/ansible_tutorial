@@ -1,0 +1,18 @@
+- hosts: localhost
+  name: startup for ansible_tut
+  vars_prompt:
+     - name: vm_ip
+	   prompt: "Bitte gib die dir zugewiesene IP ein."
+	   private: no 
+	 - name: vm_name
+	   prompt: "Bitte gib einen Namen für deine VM ein"
+  vars_files:
+  - vault.yml
+	- custom_vars.yml
+  tasks:
+     - name: create ssh_keypair
+	   include_role: genssh
+     - name: create inventory_entry
+	   include_role: inventory
+	 - name: create lxc_container
+	   include_role: create_lxc
