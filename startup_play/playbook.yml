@@ -14,5 +14,5 @@
 	   include_role: genssh
      - name: create inventory_entry
 	   include_role: inventory
-	 - name: create lxc_container
+  	 - name: create lxc_container
 	   include_role: create_lxc
