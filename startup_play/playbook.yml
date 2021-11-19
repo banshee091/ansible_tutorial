@@ -2,10 +2,10 @@
   name: startup for ansible_tut
   vars_prompt:
      - name: vm_ip
-       prompt: "Bitte gib die dir zugewiesene IP ein."
+       prompt: "Bitte gib die dir zugewiesene IP ein (ohne cidr)"
        private: no 
      - name: vm_name
-       prompt: "Bitte gib einen Namen für deine VM ein (ohne cird)"
+       prompt: "Bitte gib einen Namen für deine VM ein"
        private: no
   vars_files:
    - custom_vars.yml
