@@ -1,5 +1,0 @@
----
-prox_ip: 192.168.0.129
-prox_name: awx@pve
-prox_token_name: awx_accesstoken
-prox_token_id: "0045fcb4-7e0b-4f0c-8c26-948ea7e16ccb"
