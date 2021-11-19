@@ -1,0 +1,23 @@
+- hosts: localhost
+  name: startup for ansible_tut
+  vars_prompt:
+     - name: vm_ip
+       prompt: "Bitte gib die dir zugewiesene IP ein."
+       private: no 
+     - name: vm_name
+       prompt: "Bitte gib einen Namen für deine VM ein (ohne cird)"
+       private: no
+  vars_files:
+   - custom_vars.yml
+  tasks:
+     - name: create_ssh_keypair
+       include_role: 
+         name: genssh
+     - name: create_inventory_entry
+       include_role: 
+         name: create_inv
+     - name: create lxc_container
+       vars:
+         ssh_key: "{{ lookup('file', '~/ansible_tutorial/ssh/ssh_'~ vm_name ~'.pub') }}"
+       include_role: 
+         name: create_lxc

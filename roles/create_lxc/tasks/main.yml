@@ -1,0 +1,29 @@
+- name: create lxc container
+  proxmox:
+        api_user: awx@pve
+        api_token_id: "{{ prox_token_name }}"
+        api_token_secret: "{{ prox_token_id }}"
+        api_host: "{{ prox_ip }}"
+        node: pve
+        hostname: "{{ vm_name }}"
+        ostemplate: 'local:vztmpl/ubuntu-20.04-standard_20.04-1_amd64.tar.gz'
+        storage: local-lvm
+        state: present 
+        netif: '{"net0":"name=etho,ip={{ vm_ip }}/24,bridge=vmbr0,gw=192.168.0.1"}'
+        pubkey: "{{ ssh_key }}"
+        proxmox_default_behavior: compatibility
+
+- name: wait for
+  wait_for:
+     timeout: 5
+  delegate_to: localhost
+
+- name: start vm
+  proxmox:
+        api_user: awx@pve
+        api_token_id: "{{ prox_token_name }}"
+        api_token_secret: "{{ prox_token_id }}"
+        api_host: "{{ prox_ip }}"
+        node: pve
+        hostname: "{{ vm_name }}"
+        state: started
