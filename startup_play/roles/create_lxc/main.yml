@@ -9,7 +9,7 @@
         ostemplate: 'local:vztmpl/ubuntu-20.04-standard_20.04-1_amd64.tar.gz'
         storage: local-lvm
         state: present 
-        netif: '{"net0":"name=etho,ip={{ vm_ip }}/24,bridge=vmbr0,gw=192.168.56.1"}'
+        netif: '{"net0":"name=etho,ip={{ vm_ip }}/16,bridge=vmbr0,gw=10.42.0.1"}'
 
 - name: wait for
   wait_for:
