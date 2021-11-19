@@ -1,6 +1,0 @@
-- name: create an inventory-entry
-  lineinfile:
-   create: yes
-	 state: present
-	 path: ~/ansible_tutorial/inventory.ini
-	 line: "{{ vm_name }} ansible_host={{ vm_ip }} ansible_ssh_private_key_file=~/ansible_tutorial/ssh/ssh_{{ vm_name }} ansible_user=root"
